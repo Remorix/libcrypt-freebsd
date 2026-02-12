@@ -1,4 +1,4 @@
-LIB=		crypt
+LIB=		crypt-fbsd
 SHLIB_MAJOR?=	5
 
 PREFIX?=	/usr/local
