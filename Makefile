@@ -81,7 +81,7 @@ install-lib: all
 
 install-headers:
 	${INSTALL} -d ${DESTDIR}${INCLUDEDIR}
-	${INSTALL} -m 644 install-include/unistd.h ${DESTDIR}${INCLUDEDIR}/unistd.h
+	${INSTALL} -m 644 unistd.h ${DESTDIR}${INCLUDEDIR}/unistd.h
 	${INSTALL} -m 644 crypt.h ${DESTDIR}${INCLUDEDIR}/crypt.h
 
 install-man:

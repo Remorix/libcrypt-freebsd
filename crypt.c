@@ -34,13 +34,6 @@
 
 #include "crypt.h"
 
-#ifdef __APPLE__
-struct crypt_data {
-	int	initialized;	/* For compatibility with glibc. */
-	char	__buf[256];	/* Buffer returned by crypt_r(). */
-};
-#endif
-
 /*
  * List of supported crypt(3) formats.
  *
