@@ -7,6 +7,11 @@ LIBDIR?=	${PREFIX}/lib
 INCLUDEDIR?=	${PREFIX}/include
 MANDIR?=	${PREFIX}/share/man
 
+MAN?=		crypt.3
+MLINKS?=	${MAN} crypt_get_format.3 \
+		${MAN} crypt_r.3 \
+		${MAN} crypt_set_format.3
+
 CC?=		cc
 AR?=		ar
 INSTALL?=	install
@@ -76,11 +81,15 @@ install-lib: all
 
 install-headers:
 	${INSTALL} -d ${DESTDIR}${INCLUDEDIR}
+	${INSTALL} -m 644 install-include/unistd.h ${DESTDIR}${INCLUDEDIR}/unistd.h
 	${INSTALL} -m 644 crypt.h ${DESTDIR}${INCLUDEDIR}/crypt.h
 
 install-man:
 	${INSTALL} -d ${DESTDIR}${MANDIR}/man3
-	${INSTALL} -m 644 crypt.3 ${DESTDIR}${MANDIR}/man3/crypt.3
+	${INSTALL} -m 644 ${MAN} ${DESTDIR}${MANDIR}/man3/${MAN}
+.for _src _dst in ${MLINKS}
+	${LN} -sf ${_src} ${DESTDIR}${MANDIR}/man3/${_dst}
+.endfor
 
 clean:
 	${RM} ${OBJS} lib${LIB}.a ${SHLIB} ${SHLIB_LINK}
