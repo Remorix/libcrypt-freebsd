@@ -235,9 +235,9 @@ crypt_sha256(const char *key, const char *salt, char *buffer)
 	 * the SHA256 implementation as well. */
 	SHA256_Init(&ctx);
 	SHA256_Final(alt_result, &ctx);
-	memset(temp_result, 0, sizeof(temp_result));
-	memset(p_bytes, 0, key_len);
-	memset(s_bytes, 0, salt_len);
+	memset_s(temp_result, sizeof(temp_result), 0, sizeof(temp_result));
+	memset_s(p_bytes, key_len, 0, key_len);
+	memset_s(s_bytes, salt_len, 0, salt_len);
 
 	return (0);
 }

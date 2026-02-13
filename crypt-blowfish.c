@@ -254,10 +254,10 @@ crypt_blowfish(const char *key, const char *salt, char *buffer)
 	encode_base64((u_int8_t *)buffer, csalt, BCRYPT_MAXSALT);
 	buffer += strlen(buffer);
 	encode_base64((u_int8_t *)buffer, ciphertext, 4 * BCRYPT_BLOCKS - 1);
-	memset(&state, 0, sizeof(state));
-	memset(ciphertext, 0, sizeof(ciphertext));
-	memset(csalt, 0, sizeof(csalt));
-	memset(cdata, 0, sizeof(cdata));
+	memset_s(&state, sizeof(state), 0, sizeof(state));
+	memset_s(ciphertext, sizeof(ciphertext), 0, sizeof(ciphertext));
+	memset_s(csalt, sizeof(csalt), 0, sizeof(csalt));
+	memset_s(cdata, sizeof(cdata), 0, sizeof(cdata));
 	return (0);
 }
 

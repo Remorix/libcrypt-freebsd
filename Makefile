@@ -5,6 +5,7 @@ PREFIX?=	/usr/local
 DESTDIR?=
 LIBDIR?=	${PREFIX}/lib
 INCLUDEDIR?=	${PREFIX}/include
+DOCDIR?=	${PREFIX}/share/doc/libcrypt-freebsd
 MANDIR?=	${PREFIX}/share/man
 
 MAN?=		crypt.3
@@ -82,7 +83,9 @@ install-lib: all
 install-headers:
 	${INSTALL} -d ${DESTDIR}${INCLUDEDIR}
 	${INSTALL} -m 644 unistd.h ${DESTDIR}${INCLUDEDIR}/unistd.h
-	${INSTALL} -m 644 crypt.h ${DESTDIR}${INCLUDEDIR}/crypt.h
+	${INSTALL} -d ${DESTDIR}${DOCDIR}
+	${INSTALL} -m 644 crypt.h ${DESTDIR}${DOCDIR}/crypt.h
+	${INSTALL} -m 644 blowfish.h ${DESTDIR}${DOCDIR}/blowfish.h
 
 install-man:
 	${INSTALL} -d ${DESTDIR}${MANDIR}/man3
